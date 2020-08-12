@@ -16,6 +16,7 @@ const App = ({ allPostsData }) => {
     return (
         <Layout home>
             <section className={utilStyles.headingMd}>
+                <h2 className={utilStyles.headingLg}>Blog</h2>
                 <CreatePost>
                     <Link href="/posts/create-post">
                         <Button variant="contained" color="primary" disableElevation>
@@ -25,7 +26,6 @@ const App = ({ allPostsData }) => {
                 </CreatePost>
             </section>
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-                <h2 className={utilStyles.headingLg}>Blog</h2>
                 <ul className={utilStyles.list}>
                     <Posts allPostsData={allPostsData} />
                 </ul>
@@ -35,7 +35,7 @@ const App = ({ allPostsData }) => {
 };
 
 const CreatePost = styled.div`
-    text-align: center;
+    margin-bottom: 30px;
 `;
 
 const Title = styled.h1`

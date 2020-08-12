@@ -496,11 +496,18 @@ const Posts = ({
     body,
     title,
     comments
-  }) => id && id !== ' ' && body && body !== ' ' && title && title !== ' ' ? __jsx(Post, {
+  }) => id && id !== ' ' && body && body !== ' ' && title && title !== ' ' ?
+  /* <Link href="/post/[id]" > */
+  __jsx(Post, {
     key: id
-  }, __jsx(PostContent, null, __jsx(Title, null, __jsx("div", null, title)), __jsx(BodyPost, null, body), __jsx(Comment, null, comments && comments.body !== ' ' && comments.body !== '' ? comments.body : 'no comment')), __jsx("div", null, __jsx(BtnDel, {
+  }, __jsx(PostLogo, {
+    src: "/images/post-logo.png",
+    alt: "React-logo"
+  }), __jsx(PostContent, null, __jsx(Title, null, __jsx("div", null, title)), __jsx(BodyPost, null, body), __jsx(Comment, null, comments && comments.body !== ' ' && comments.body !== '' ? comments.body : 'no comment')), __jsx("div", null, __jsx(BtnDel, {
     onClick: api["b" /* dellPost */].bind(undefined, id)
-  }, "DELETE"))) : null)));
+  }, "DELETE"))) :
+  /* </Link> */
+  null)));
 };
 
 const Grid = external_styled_components_default.a.div`
@@ -510,20 +517,26 @@ const Grid = external_styled_components_default.a.div`
     grid-gap: 2vw;
 `;
 const Post = external_styled_components_default.a.div`
-    background: #ddd;
+    background: #f5f5f5;
     border-radius: 3px;
-    padding: 15px;
+
     cursor: pointer;
     transition: box-shadow 0.1s;
     overflow: hidden;
     position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 40px;
 
     :hover {
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     }
 `;
 const PostContent = external_styled_components_default.a.div`
-    padding-bottom: 120px;
+    padding: 15px;
+    padding-bottom: 130px;
+`;
+const PostLogo = external_styled_components_default.a.img`
+    width: 100%;
+    height: auto;
 `;
 const Comment = external_styled_components_default.a.div`
     margin-top: 50px;
@@ -608,7 +621,9 @@ const App = ({
     home: true
   }, pages_jsx("section", {
     className: utils_module_default.a.headingMd
-  }, pages_jsx(CreatePost, null, pages_jsx(link_default.a, {
+  }, pages_jsx("h2", {
+    className: utils_module_default.a.headingLg
+  }, "Blog"), pages_jsx(CreatePost, null, pages_jsx(link_default.a, {
     href: "/posts/create-post"
   }, pages_jsx(Button_default.a, {
     variant: "contained",
@@ -616,9 +631,7 @@ const App = ({
     disableElevation: true
   }, "Create post")))), pages_jsx("section", {
     className: `${utils_module_default.a.headingMd} ${utils_module_default.a.padding1px}`
-  }, pages_jsx("h2", {
-    className: utils_module_default.a.headingLg
-  }, "Blog"), pages_jsx("ul", {
+  }, pages_jsx("ul", {
     className: utils_module_default.a.list
   }, pages_jsx(post, {
     allPostsData: allPostsData
@@ -626,7 +639,7 @@ const App = ({
 };
 
 const CreatePost = external_styled_components_default.a.div`
-    text-align: center;
+    margin-bottom: 30px;
 `;
 const pages_Title = external_styled_components_default.a.h1`
     color: #333;

@@ -12,7 +12,9 @@ const Posts = ({ allPostsData }) => {
             <Grid>
                 {allPostsData.map(({ id, body, title, comments }) =>
                     id && id !== ' ' && body && body !== ' ' && title && title !== ' ' ? (
+                        /* <Link href="/post/[id]" > */
                         <Post key={id}>
+                            <PostLogo src="/images/post-logo.png" alt="React-logo" />
                             <PostContent>
                                 <Title>
                                     <div>{title}</div>
@@ -30,7 +32,8 @@ const Posts = ({ allPostsData }) => {
                                 <BtnDel onClick={dellPost.bind(this, id)}>DELETE</BtnDel>
                             </div>
                         </Post>
-                    ) : null,
+                    ) : /* </Link> */
+                    null,
                 )}
             </Grid>
         </div>
@@ -45,21 +48,28 @@ const Grid = styled.div`
 `;
 
 const Post = styled.div`
-    background: #ddd;
+    background: #f5f5f5;
     border-radius: 3px;
-    padding: 15px;
+
     cursor: pointer;
     transition: box-shadow 0.1s;
     overflow: hidden;
     position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 40px;
 
     :hover {
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     }
 `;
 
 const PostContent = styled.div`
-    padding-bottom: 120px;
+    padding: 15px;
+    padding-bottom: 130px;
+`;
+
+const PostLogo = styled.img`
+    width: 100%;
+    height: auto;
 `;
 
 const Comment = styled.div`

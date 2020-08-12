@@ -1,0 +1,1 @@
+_N_E=(window.webpackJsonp_N_E=window.webpackJsonp_N_E||[]).push([[8],{UGn6:function(n,o){},toHm:function(n,o,_){(window.__NEXT_P=window.__NEXT_P||[]).push(["/post/[id]",function(){return _("UGn6")}])}},[["toHm",0]]]);
